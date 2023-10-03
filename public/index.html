@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    $(document).ready(() => {
+  $('#weather-form').submit((event) => {
+    event.preventDefault();
+    const city = $('#city-input').val();
+    $.post('/weather', { city }, (data) => {
+      $('#weather-description').text(data.description);
+      $('#weather-temperature').text(data.temperature);
+      $('#weather-humidity').text(data.humidity);
+      $('#weather-wind-speed').text(data.windSpeed);
+      $('#weather-forecast').empty();
+      data.forecast.forEach((item) => {
+        const $forecastItem = $('<div>').addClass('forecast-item');
+        const $forecastDate = $('<h4>').addClass('forecast-date').text(item.date);
+        const $forecastTemperature = $('<p>').addClass('forecast-temperature').text(item.temperature);
+        $forecastItem.append($forecastDate, $forecastTemperature);
+        $('#weather-forecast').append($forecastItem);
+      });
+    });
+  });
+});
+  </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <img src="/weather-app/asserts/logo.png" alt="Logo">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Feedback</a></li>
+          </ul>
+        </nav>
+      </header>
+  <h1>Weather App</h1>
+  <form id="weather-form">
+    <label for="city-input">City:</label>
+    <input type="text" id="city-input" name="city">
+    <button type="submit">Get Weather</button>
+  </form>
+  
+  <h2>Weather:</h2>
+<div id="weather-data">
+  <p>Description: <span id="weather-description"></span></p>
+  <p>Temperature: <span id="weather-temperature"></span></p>
+  <p>Humidity: <span id="weather-humidity"></span></p>
+  <p>Wind Speed: <span id="weather-wind-speed"></span></p>
+  <h3>Forecast:</h3>
+  <div id="weather-forecast">
+  </div>
+</div>
+</body>
+</html>

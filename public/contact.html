@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback</title>
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/weather-app/asserts/logo.png" alt="Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Feedback</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact">
+      <h1>FEEDBACK</h1>
+      <form action="/contact" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      
+        <button type="submit">Send Message</button>
+      </form>
+      
+    </section>
+    <li class="liii"><a href="/contacts">Top Contacts</a></li>
+  </main>
+
+  <footer>
+    <p>&copy; Weather - App 2023</p>
+  </footer>
+</body>
+</html>
